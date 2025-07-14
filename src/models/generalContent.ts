@@ -1,69 +1,112 @@
-import type { ContentModel } from "contentful-code-models";
-import { complexRichText } from "./shared/complexRichText";
-import { stylesOnlyRichText } from "./shared/stylesOnlyRichText";
+import { complexRichText } from '@/models/shared/complexRichText';
+import { stylesOnlyRichText } from '@/models/shared/stylesOnlyRichText';
+import type { ContentModel } from 'contentful-code-models';
 
 export const generalContent: ContentModel = {
   sys: {
-    id: "generalContent",
+    id: 'generalContent',
   },
-  name: "General Content",
-  description: "Content type for general content blocks.",
-  displayField: "internalTitle",
+  name: 'General Content',
+  description: 'Content type for general content blocks.',
+  displayField: 'internalTitle',
   fields: [
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'internalTitle',
+      name: 'Internal Title',
+      type: 'Symbol',
       localized: false,
-      id: "internalTitle",
-      name: "Internal Title",
-      type: "Symbol",
+      required: true,
       validations: [],
+      disabled: false,
+      omitted: false,
     },
     {
       ...stylesOnlyRichText,
-      id: "pretext",
-      name: "Pretext",
+      id: 'pretext',
+      name: 'Pretext',
     },
     {
       ...stylesOnlyRichText,
-      id: "title",
-      name: "Title",
+      id: 'title',
+      name: 'Title',
     },
     {
       ...complexRichText,
-      id: "body",
-      name: "Body",
+      id: 'body',
+      name: 'Body',
     },
     {
-      omitted: false,
-      disabled: false,
-      required: false,
+      id: 'asset',
+      name: 'Asset',
+      type: 'Link',
       localized: false,
-      linkType: "Asset",
-      id: "asset",
-      name: "Asset",
-      type: "Link",
+      required: false,
       validations: [
         {
-          linkMimetypeGroup: ["image", "video"],
+          linkMimetypeGroup: ['image', 'video'],
         },
       ],
+      disabled: false,
+      omitted: false,
+      linkType: 'Asset',
     },
     {
-      omitted: false,
-      disabled: false,
-      required: false,
+      id: 'link',
+      name: 'Link',
+      type: 'Link',
       localized: false,
-      linkType: "Entry",
-      id: "link",
-      name: "Link",
-      type: "Link",
+      required: false,
       validations: [
         {
-          linkContentType: ["link"],
+          linkContentType: ['link'],
         },
       ],
+      disabled: false,
+      omitted: false,
+      linkType: 'Entry',
     },
   ],
+  editorInterface: {
+    controls: [
+      {
+        fieldId: 'internalTitle',
+        widgetId: 'singleLine',
+        widgetNamespace: 'builtin',
+      },
+      {
+        fieldId: 'pretext',
+        settings: {
+          helpText:
+            'This is not always shown. Whether this is rendered depends on the usage of this entry',
+        },
+        widgetId: 'richTextEditor',
+        widgetNamespace: 'builtin',
+      },
+      {
+        fieldId: 'title',
+        widgetId: 'richTextEditor',
+        widgetNamespace: 'builtin',
+      },
+      {
+        fieldId: 'body',
+        widgetId: 'richTextEditor',
+        widgetNamespace: 'builtin',
+      },
+      {
+        fieldId: 'asset',
+        widgetId: 'assetLinkEditor',
+        widgetNamespace: 'builtin',
+      },
+      {
+        fieldId: 'link',
+        widgetId: 'entryLinkEditor',
+        widgetNamespace: 'builtin',
+      },
+      {
+        fieldId: 'image',
+        widgetId: 'assetLinkEditor',
+        widgetNamespace: 'builtin',
+      },
+    ],
+  },
 };

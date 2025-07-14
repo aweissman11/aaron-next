@@ -1,47 +1,60 @@
-import type { ContentModel } from "contentful-code-models";
+import type { ContentModel } from 'contentful-code-models';
 
 export const link: ContentModel = {
   sys: {
-    id: "link",
+    id: 'link',
   },
-  name: "Link",
-  description: "Content type for links to other entries or assets.",
-  displayField: "internalTitle",
+  name: 'Link',
+  description: 'Content type for links to other entries or assets.',
+  displayField: 'internalTitle',
   fields: [
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'internalTitle',
+      name: 'Internal Title',
+      type: 'Symbol',
       localized: false,
-      id: "internalTitle",
-      name: "Internal Title",
-      type: "Symbol",
+      required: true,
       validations: [],
+      disabled: false,
+      omitted: false,
     },
     {
-      omitted: false,
-      disabled: false,
+      id: 'text',
+      name: 'Text',
+      type: 'Symbol',
+      localized: false,
       required: false,
-      localized: false,
-      id: "text",
-      name: "Text",
-      type: "Symbol",
       validations: [],
+      disabled: false,
+      omitted: false,
     },
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'ref',
+      name: 'Reference',
+      type: 'Link',
       localized: false,
-      linkType: "Entry",
-      id: "ref",
-      name: "Reference",
-      type: "Link",
+      required: true,
       validations: [
         {
-          linkContentType: ["landingPage"],
+          linkContentType: ['landingPage'],
         },
       ],
+      disabled: false,
+      omitted: false,
+      linkType: 'Entry',
     },
   ],
+  editorInterface: {
+    controls: [
+      {
+        fieldId: 'internalTitle',
+      },
+      {
+        fieldId: 'text',
+      },
+      {
+        fieldId: 'ref',
+      },
+    ],
+  },
 };

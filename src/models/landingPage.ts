@@ -1,91 +1,110 @@
-import type { ContentModel } from "contentful-code-models";
+import type { ContentModel } from 'contentful-code-models';
 
 export const landingPage: ContentModel = {
   sys: {
-    id: "landingPage",
+    id: 'landingPage',
   },
-  name: "Landing Page",
-  description: "Content type for landing pages.",
-  displayField: "internalTitle",
+  name: 'Landing Page',
+  description: 'Content type for landing pages.',
+  displayField: 'internalTitle',
   fields: [
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'internalTitle',
+      name: 'Internal Title',
+      type: 'Symbol',
       localized: false,
-      id: "internalTitle",
-      name: "Internal Title",
-      type: "Symbol",
+      required: true,
       validations: [
         {
           unique: true,
-          message: "This internal title must be unique across the site.",
+          message: 'This internal title must be unique across the site.',
         },
       ],
+      disabled: false,
+      omitted: false,
     },
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'slug',
+      name: 'Slug',
+      type: 'Symbol',
       localized: false,
-      id: "slug",
-      name: "Slug",
-      type: "Symbol",
+      required: true,
       validations: [
         {
           unique: true,
-          message: "This slug must be unique across the site.",
+          message: 'This slug must be unique across the site.',
         },
       ],
+      disabled: false,
+      omitted: false,
     },
     {
-      omitted: false,
-      disabled: false,
+      id: 'seo',
+      name: 'SEO',
+      type: 'Link',
+      localized: false,
       required: true,
-      localized: false,
-      linkType: "Entry",
-      id: "seo",
-      name: "SEO",
-      type: "Link",
       validations: [
         {
-          linkContentType: ["seo"],
+          linkContentType: ['seo'],
         },
       ],
+      disabled: false,
+      omitted: false,
+      linkType: 'Entry',
     },
     {
-      omitted: false,
-      disabled: false,
-      required: false,
+      id: 'hero',
+      name: 'Hero',
+      type: 'Link',
       localized: false,
-      linkType: "Entry",
-      id: "hero",
-      name: "Hero",
-      type: "Link",
+      required: false,
       validations: [
         {
-          linkContentType: ["hero"],
+          linkContentType: ['hero'],
         },
       ],
+      disabled: false,
+      omitted: false,
+      linkType: 'Entry',
     },
     {
-      omitted: false,
-      disabled: false,
-      required: false,
+      id: 'modules',
+      name: 'Modules',
+      type: 'Array',
       localized: false,
-      id: "modules",
-      name: "Modules",
-      type: "Array",
+      required: false,
+      validations: [],
+      disabled: false,
+      omitted: false,
       items: {
-        type: "Link",
+        type: 'Link',
         validations: [
           {
-            linkContentType: ["fiftyFifty"],
+            linkContentType: ['fiftyFifty'],
           },
         ],
-        linkType: "Entry",
+        linkType: 'Entry',
       },
-      validations: [],
     },
   ],
+  editorInterface: {
+    controls: [
+      {
+        fieldId: 'internalTitle',
+      },
+      {
+        fieldId: 'slug',
+      },
+      {
+        fieldId: 'seo',
+      },
+      {
+        fieldId: 'hero',
+      },
+      {
+        fieldId: 'modules',
+      },
+    ],
+  },
 };

@@ -1,15 +1,15 @@
-import { ContentFields, KeyValueMap } from "contentful-management";
+import { ContentFields, KeyValueMap } from 'contentful-management';
 
 export const stylesOnlyRichText: ContentFields<KeyValueMap> = {
-  id: "text",
-  name: "Text",
-  type: "RichText",
+  id: 'text',
+  name: 'Text',
+  type: 'RichText',
   validations: [
     {
       enabledNodeTypes: [],
     },
     {
-      enabledMarks: ["bold", "italic", "underline"],
+      enabledMarks: ['bold', 'italic', 'underline'],
     },
   ],
   localized: false,

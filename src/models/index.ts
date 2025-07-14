@@ -1,25 +1,29 @@
-import type { ContentModel } from "contentful-code-models";
-import { fiftyFifty } from "./fiftyFifty";
-import { generalContent } from "./generalContent";
-import { seo } from "./seo";
-import { landingPage } from "./landingPage";
-import { simpleHero } from "./simpleHero";
-import { link } from "./link";
-import { CreateLocaleProps } from "contentful-management";
+import type { ContentModel } from 'contentful-code-models';
+import { generalContent } from './generalContent';
+import { link } from './link';
+import { simpleHero } from './simpleHero';
+import { landingPage } from './landingPage';
+import { seo } from './seo';
+import { fiftyFifty } from './fiftyFifty';
 
 export const models: ContentModel[] = [
-  fiftyFifty,
   generalContent,
-  seo,
-  landingPage,
-  simpleHero,
   link,
+  simpleHero,
+  landingPage,
+  seo,
+  fiftyFifty,
 ];
 
-export const locales: CreateLocaleProps[] = [
+export const locales = [
   {
-    code: "en-US",
-    name: "English (USA)",
+    name: 'English (USA)',
+    internal_code: 'en-US',
+    code: 'en-US',
+    fallbackCode: null,
     default: true,
+    contentManagementApi: true,
+    contentDeliveryApi: true,
+    optional: false,
   },
 ];

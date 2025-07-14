@@ -1,96 +1,67 @@
-import type { ContentModel } from "contentful-code-models";
+import type { ContentModel } from 'contentful-code-models';
 
 export const simpleHero: ContentModel = {
   sys: {
-    id: "simpleHero",
+    id: 'simpleHero',
   },
-  name: "Simple Hero",
+  name: 'Simple Hero',
   description:
-    "Content type for a simple hero section with a title and subtitle.",
-  displayField: "internalTitle",
+    'Content type for a simple hero section with a title and subtitle.',
+  displayField: 'internalTitle',
   fields: [
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'internalTitle',
+      name: 'Internal Title',
+      type: 'Symbol',
       localized: false,
-      id: "internalTitle",
-      name: "Internal Title",
-      type: "Symbol",
+      required: true,
       validations: [],
+      disabled: false,
+      omitted: false,
     },
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'content',
+      name: 'Content',
+      type: 'Link',
       localized: false,
-      linkType: "Entry",
-      id: "content",
-      name: "Content",
-      type: "Link",
+      required: true,
       validations: [
         {
-          linkContentType: ["generalContent"],
+          linkContentType: ['generalContent'],
         },
       ],
+      disabled: false,
+      omitted: false,
+      linkType: 'Entry',
     },
     {
-      omitted: false,
-      disabled: false,
-      required: true,
+      id: 'heroType',
+      name: 'Hero Type',
+      type: 'Symbol',
       localized: false,
+      required: true,
+      validations: [
+        {
+          in: ['simple', 'complex'],
+        },
+      ],
       defaultValue: {
-        "en-US": "simple",
+        'en-US': 'simple',
       },
-      id: "heroType",
-      name: "Hero Type",
-      type: "Symbol",
-      validations: [
-        {
-          in: ["simple", "complex"],
-        },
-      ],
+      disabled: false,
+      omitted: false,
     },
   ],
   editorInterface: {
-    editors: [
-      {
-        settings: {
-          fieldId: "internalTitle",
-        },
-        widgetId: "singleLine",
-        widgetNamespace: "editor-builtin",
-      },
-      {
-        settings: {
-          fieldId: "content",
-        },
-        widgetId: "entryLinkEditor",
-        widgetNamespace: "editor-builtin",
-      },
-      {
-        settings: {
-          fieldId: "heroType",
-        },
-        widgetId: "dropdown",
-        widgetNamespace: "editor-builtin",
-      },
-    ],
     controls: [
       {
-        fieldId: "internalTitle",
-        widgetId: "singleLine",
-        widgetNamespace: "builtin",
+        fieldId: 'internalTitle',
       },
       {
-        fieldId: "content",
-        widgetId: "entryLinkEditor",
-        widgetNamespace: "builtin",
+        fieldId: 'content',
       },
       {
-        fieldId: "heroType",
-        widgetId: "dropdown",
-        widgetNamespace: "builtin",
+        fieldId: 'heroType',
       },
     ],
   },
