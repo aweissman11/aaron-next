@@ -92,18 +92,34 @@ export const landingPage: ContentModel = {
     controls: [
       {
         fieldId: 'internalTitle',
+        widgetId: 'singleLine',
+        widgetNamespace: 'builtin',
       },
       {
         fieldId: 'slug',
+        widgetId: 'singleLine',
+        widgetNamespace: 'builtin',
       },
       {
         fieldId: 'seo',
+        widgetId: 'entryLinkEditor',
+        widgetNamespace: 'builtin',
       },
       {
         fieldId: 'hero',
+        widgetId: 'entryLinkEditor',
+        widgetNamespace: 'builtin',
       },
       {
         fieldId: 'modules',
+        settings: {
+          helpText: 'The main content of the page goes here',
+          bulkEditing: false,
+          showLinkEntityAction: true,
+          showCreateEntityAction: true,
+        },
+        widgetId: 'entryLinksEditor',
+        widgetNamespace: 'builtin',
       },
     ],
   },

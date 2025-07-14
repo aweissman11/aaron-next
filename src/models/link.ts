@@ -1,17 +1,17 @@
-import type { ContentModel } from 'contentful-code-models';
+import type { ContentModel } from "contentful-code-models";
 
 export const link: ContentModel = {
   sys: {
-    id: 'link',
+    id: "link",
   },
-  name: 'Link',
-  description: 'Content type for links to other entries or assets.',
-  displayField: 'internalTitle',
+  name: "Link",
+  description: "Content type for links to other entries or assets.",
+  displayField: "internalTitle",
   fields: [
     {
-      id: 'internalTitle',
-      name: 'Internal Title',
-      type: 'Symbol',
+      id: "internalTitle",
+      name: "Internal Title",
+      type: "Symbol",
       localized: false,
       required: true,
       validations: [],
@@ -19,9 +19,9 @@ export const link: ContentModel = {
       omitted: false,
     },
     {
-      id: 'text',
-      name: 'Text',
-      type: 'Symbol',
+      id: "text",
+      name: "Text",
+      type: "Symbol",
       localized: false,
       required: false,
       validations: [],
@@ -29,31 +29,52 @@ export const link: ContentModel = {
       omitted: false,
     },
     {
-      id: 'ref',
-      name: 'Reference',
-      type: 'Link',
+      id: "url",
+      name: "URL",
+      type: "Symbol",
+      localized: false,
+      required: false,
+      validations: [
+        {
+          regexp: {
+            pattern:
+              "^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?$",
+            flags: "",
+          },
+        },
+      ],
+    },
+    {
+      id: "ref",
+      name: "Reference",
+      type: "Link",
       localized: false,
       required: true,
       validations: [
         {
-          linkContentType: ['landingPage'],
+          linkContentType: ["landingPage"],
         },
       ],
       disabled: false,
       omitted: false,
-      linkType: 'Entry',
+      linkType: "Entry",
     },
   ],
   editorInterface: {
     controls: [
       {
-        fieldId: 'internalTitle',
+        fieldId: "url",
+        settings: {
+          helpText:
+            "Enter a URL to link to. If a reference is set, this will be ignored.",
+        },
       },
       {
-        fieldId: 'text',
-      },
-      {
-        fieldId: 'ref',
+        fieldId: "ref",
+        settings: {
+          helpText:
+            "Select a landing page to link to. If set, this will override the url field",
+        },
       },
     ],
   },
