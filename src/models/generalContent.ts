@@ -65,16 +65,5 @@ export const generalContent: ContentModel = {
         },
       ],
     },
-    {
-      omitted: true,
-      disabled: true,
-      required: false,
-      localized: false,
-      linkType: "Asset",
-      id: "image",
-      name: "Image",
-      type: "Link",
-      validations: [],
-    },
   ],
 };
