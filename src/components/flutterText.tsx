@@ -3,9 +3,9 @@ import {
   motion,
   useAnimationControls,
   useInView,
-} from "motion/react";
-import { useEffect, useMemo, useRef } from "react";
-import { v4 as uuidv4 } from "uuid";
+} from 'motion/react';
+import { useEffect, useMemo, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export type FlutterTextProps = {
   text: string;
@@ -27,12 +27,12 @@ export default function FlutterText({
     () =>
       text
         .trim()
-        .split("")
+        .split('')
         .map((letter) => ({
           letter,
           key: uuidv4(),
         })),
-    [text]
+    [text],
   );
 
   const controls = useAnimationControls();

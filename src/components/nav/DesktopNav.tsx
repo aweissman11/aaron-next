@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import clsx from "clsx";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { INavLink, SimpleNavLink } from "./Nav";
-import NavWrapper from "./NavWrapper";
-import { useNavShowing } from "@/providers/navProvider";
-import AppLink from "@/components/AppLink";
-import { MoveRight } from "lucide-react";
-import Logo from "@/components/nav/assets/logo";
+import clsx from 'clsx';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import { INavLink, SimpleNavLink } from './Nav';
+import NavWrapper from './NavWrapper';
+import { useNavShowing } from '@/providers/navProvider';
+import AppLink from '@/components/AppLink';
+import { MoveRight } from 'lucide-react';
+import Logo from '@/components/nav/assets/logo';
 // import Image from "next/image";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 function SubrouteLink({
   link,
@@ -40,42 +40,42 @@ function SubrouteLink({
           src={link.image!}
           {...link.image}
           className={clsx(
-            "ease-in-out  transition-transform duration-[0.3s] group-hover/link:scale-[1.1]"
+            'ease-in-out  transition-transform duration-[0.3s] group-hover/link:scale-[1.1]',
           )}
         />
       </div>
       <p className="cta mt-[14px] flex text-16">
         <span
           className={clsx(
-            "flex-center -translate-y-[2px] rounded-full p-0",
-            "ease-in-out -translate-x-4 opacity-0 transition-all duration-500 group-hover/link:translate-x-0 group-hover/link:opacity-100",
+            'flex-center -translate-y-[2px] rounded-full p-0',
+            'ease-in-out -translate-x-4 opacity-0 transition-all duration-500 group-hover/link:translate-x-0 group-hover/link:opacity-100',
             {
-              "bg-onyx text-white": !blackPage,
-              "bg-white text-black": blackPage,
-            }
+              'bg-onyx text-white': !blackPage,
+              'bg-white text-black': blackPage,
+            },
           )}
         >
           <MoveRight aria-label="arrow" />
         </span>
         <span
           className={clsx(
-            "-translate-x-4 transition-all duration-500 group-hover/link:ml-3 group-hover/link:translate-x-0",
+            '-translate-x-4 transition-all duration-500 group-hover/link:ml-3 group-hover/link:translate-x-0',
             {
-              "text-white": blackPage,
-              "text-black": !blackPage,
-            }
+              'text-white': blackPage,
+              'text-black': !blackPage,
+            },
           )}
         >
           {link.name}
         </span>
         <span
           className={clsx(
-            "flex-center ml-3 -translate-y-[2px]  rounded-full p-0",
-            "ease-in-out -translate-x-4 opacity-100 transition-all duration-500 group-hover/link:translate-x-0 group-hover/link:opacity-0",
+            'flex-center ml-3 -translate-y-[2px]  rounded-full p-0',
+            'ease-in-out -translate-x-4 opacity-100 transition-all duration-500 group-hover/link:translate-x-0 group-hover/link:opacity-0',
             {
-              "bg-onyx text-white": !blackPage,
-              "bg-white text-black": blackPage,
-            }
+              'bg-onyx text-white': !blackPage,
+              'bg-white text-black': blackPage,
+            },
           )}
         >
           <MoveRight aria-label="arrow" />
@@ -96,9 +96,9 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
   const [subNav, _setSubNav] = useState<string | null>(null);
   const setSubNav = (n: string | null) => {
     if (n) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = '';
     }
     _setSubNav(n);
   };
@@ -109,12 +109,12 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
   return (
     <NavWrapper id="top-nav-desktop" className="lgmax:hidden">
       <div
-        className={clsx("group/nav z-20 h-24 w-full duration-300", {
-          "text-white": blackPage,
-          "text-black": !blackPage,
-          "bg-black": blackPage && !atTopOfPage,
-          "bg-white": !blackPage && !atTopOfPage,
-          "bg-transparent": atTopOfPage,
+        className={clsx('group/nav z-20 h-24 w-full duration-300', {
+          'text-white': blackPage,
+          'text-black': !blackPage,
+          'bg-black': blackPage && !atTopOfPage,
+          'bg-white': !blackPage && !atTopOfPage,
+          'bg-transparent': atTopOfPage,
         })}
       >
         <div className="global-container flex h-full w-full items-center justify-end">
@@ -126,10 +126,10 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
             <h1 className="flex items-center text-lg w-full uppercase whitespace-nowrap">
               <Logo
                 className={clsx(
-                  "h-4 relative top-[3px] mr-2",
+                  'h-4 relative top-[3px] mr-2',
                   blackPage
-                    ? "stroke-white fill-white"
-                    : "stroke-black fill-black"
+                    ? 'stroke-white fill-white'
+                    : 'stroke-black fill-black',
                 )}
               />
               <span className="relative top-[2px]">Aaron Weissman</span>
@@ -142,16 +142,16 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
                   onMouseEnter={() => setSubNav(link.name)}
                   onMouseLeave={() => setSubNav(null)}
                   className={clsx(
-                    "group relative z-10 cursor-default text-14",
-                    ix !== 0 && "ml-14"
+                    'group relative z-10 cursor-default text-14',
+                    ix !== 0 && 'ml-14',
                   )}
                   tabIndex={0}
                   onKeyDown={(e) => {
-                    if (["Space", "Enter"].includes(e.code)) {
+                    if (['Space', 'Enter'].includes(e.code)) {
                       setSubNav(link.name);
                     }
 
-                    if (e.code === "Escape") {
+                    if (e.code === 'Escape') {
                       setSubNav(null);
                     }
                   }}
@@ -163,23 +163,23 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
                     className={clsx(
                       "flex border-b-2 border-solid transition-transform content-[''] group-hover:scale-x-100",
                       {
-                        "scale-x-100": pathname.includes(link.href),
-                        "scale-x-0": !pathname.includes(link.href),
-                        "border-white": blackPage,
-                        "border-black": !blackPage,
-                      }
+                        'scale-x-100': pathname.includes(link.href),
+                        'scale-x-0': !pathname.includes(link.href),
+                        'border-white': blackPage,
+                        'border-black': !blackPage,
+                      },
                     )}
                   />
                   <div className="absolute hidden h-[34px] w-full bg-transparent group-hover:block" />
                   <div
                     // top 96px minus 2px so there's no gap
                     className={clsx(
-                      "fixed left-0 top-[94px] max-h-0 w-screen overflow-hidden transition-[max-height] duration-300",
+                      'fixed left-0 top-[94px] max-h-0 w-screen overflow-hidden transition-[max-height] duration-300',
                       {
-                        "bg-black text-white": blackPage,
-                        "bg-white text-black": !blackPage,
-                        "max-h-[800px]": subNav === link.name,
-                      }
+                        'bg-black text-white': blackPage,
+                        'bg-white text-black': !blackPage,
+                        'max-h-[800px]': subNav === link.name,
+                      },
                     )}
                   >
                     <div className="global-container global-grid w-full pt-10 pb-20">
@@ -206,8 +206,8 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
                   href={link.href}
                   title={link.name}
                   className={clsx(
-                    "group relative z-10 text-14",
-                    ix !== 0 && "ml-14"
+                    'group relative z-10 text-14',
+                    ix !== 0 && 'ml-14',
                   )}
                   tabIndex={0}
                 >
@@ -218,23 +218,23 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
                     className={clsx(
                       "flex border-b-2 border-solid transition-transform content-[''] group-hover:scale-x-100",
                       {
-                        "scale-x-100": pathname.includes(link.href),
-                        "scale-x-0": !pathname.includes(link.href),
-                        "border-white": blackPage,
-                        "border-black": !blackPage,
-                      }
+                        'scale-x-100': pathname.includes(link.href),
+                        'scale-x-0': !pathname.includes(link.href),
+                        'border-white': blackPage,
+                        'border-black': !blackPage,
+                      },
                     )}
                   />
                   <div className="absolute hidden h-[34px] w-full bg-transparent group-hover:block" />
                   <div
                     // top 96px minus 2px so there's no gap
                     className={clsx(
-                      "fixed left-0 top-[94px] max-h-0 w-screen overflow-hidden transition-[max-height] duration-300",
+                      'fixed left-0 top-[94px] max-h-0 w-screen overflow-hidden transition-[max-height] duration-300',
                       {
-                        "bg-black text-white": blackPage,
-                        "bg-white text-black": !blackPage,
-                        "max-h-[800px]": subNav === link.name,
-                      }
+                        'bg-black text-white': blackPage,
+                        'bg-white text-black': !blackPage,
+                        'max-h-[800px]': subNav === link.name,
+                      },
                     )}
                   >
                     <div className="global-container global-grid w-full pt-10 pb-20">
@@ -245,7 +245,7 @@ export default function DesktopNav({ links }: DesktopNav2Props) {
                   </div>
                 </AppLink>
               </div>
-            )
+            ),
           )}
           {/* <SearchTakeover /> */}
 

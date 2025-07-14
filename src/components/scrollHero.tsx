@@ -1,16 +1,16 @@
-import motion, { useScroll, useTransform } from "motion/react";
+import motion, { useScroll, useTransform } from 'motion/react';
 import {
   useMountEffect,
   useEventListener,
   useUnmountEffect,
   useWindowSize,
-} from "@react-hookz/web";
-import { useRef, useState } from "react";
-import clsx from "clsx";
-import FlutterText from "./flutterText";
-import { useNavShowing } from "~/contexts/NavShowingProvider";
-import { ContentfulCenteredImage } from "../shared";
-import { PAGE_TRANSITION_DELAY } from "~/contexts/PageTransitionProvider";
+} from '@react-hookz/web';
+import { useRef, useState } from 'react';
+import clsx from 'clsx';
+import FlutterText from './flutterText';
+import { useNavShowing } from '~/contexts/NavShowingProvider';
+import { ContentfulCenteredImage } from '../shared';
+import { PAGE_TRANSITION_DELAY } from '~/contexts/PageTransitionProvider';
 
 type HomeVideoHeroProps = {
   fields: SpecificLocaleFields<IHomeVideoHeroFields>;
@@ -18,7 +18,7 @@ type HomeVideoHeroProps = {
 
 const TextBox = ({
   fields,
-  className = "",
+  className = '',
   show = true,
 }: {
   fields: SpecificLocaleFields<IHomeVideoHeroFields>;
@@ -28,7 +28,7 @@ const TextBox = ({
   <div
     className={clsx(
       className,
-      "absolute inset-0 flex h-full w-full flex-col justify-center"
+      'absolute inset-0 flex h-full w-full flex-col justify-center',
     )}
   >
     <div className="flex w-full flex-col items-center justify-center">
@@ -75,7 +75,7 @@ export default function HomeVideoHero({ fields }: HomeVideoHeroProps) {
     }
   };
 
-  useEventListener(window, "scroll", onScroll);
+  useEventListener(window, 'scroll', onScroll);
   useMountEffect(onScroll);
 
   const [showText, setShowText] = useState(false);
@@ -88,7 +88,7 @@ export default function HomeVideoHero({ fields }: HomeVideoHeroProps) {
     window.scrollTo({
       // height of hero plus mobile nav
       top: height * 2.5 + 80,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
 
@@ -97,9 +97,9 @@ export default function HomeVideoHero({ fields }: HomeVideoHeroProps) {
   return (
     <section className="relative mx-auto h-full w-screen">
       <div
-        className={clsx("left-[36px] flex h-screen w-[calc(100vw-72px)]", {
-          "fixed top-0": !stickyNav,
-          "absolute bottom-0": stickyNav,
+        className={clsx('left-[36px] flex h-screen w-[calc(100vw-72px)]', {
+          'fixed top-0': !stickyNav,
+          'absolute bottom-0': stickyNav,
         })}
       >
         {/* // height is screen minus nav minus space for bottom explore eyebrow */}
@@ -175,17 +175,17 @@ export default function HomeVideoHero({ fields }: HomeVideoHeroProps) {
       </div>
       <div
         className={clsx(
-          "bottom-3 z-10 col-span-full flex w-full items-center justify-center",
+          'bottom-3 z-10 col-span-full flex w-full items-center justify-center',
           {
             fixed: !stickyNav,
             absolute: stickyNav,
-          }
+          },
         )}
       >
         <motion.button
           className={clsx({
-            "min-w-max": true,
-            "text-14": true,
+            'min-w-max': true,
+            'text-14': true,
             uppercase: true,
           })}
           style={{
@@ -200,15 +200,15 @@ export default function HomeVideoHero({ fields }: HomeVideoHeroProps) {
             className="flex border-b border-solid border-black content-['']"
             variants={{
               hover: {
-                transform: "scaleX(1)",
+                transform: 'scaleX(1)',
               },
               noHover: {
-                transform: "scaleX(0)",
+                transform: 'scaleX(0)',
               },
             }}
             transition={{
               duration: 0.2,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             }}
           />
         </motion.button>

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   createContext,
@@ -7,11 +7,11 @@ import {
   useContext,
   useEffect,
   useState,
-} from "react";
-import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
-import { usePrevious, useWindowSize } from "@react-hookz/web";
-import { Nav } from "@/components/nav";
+} from 'react';
+import { usePathname } from 'next/navigation';
+import type { ReactNode } from 'react';
+import { usePrevious, useWindowSize } from '@react-hookz/web';
+import { Nav } from '@/components/nav';
 
 // See tailwind config for these vals
 const desktopNavHeight = 96;
@@ -108,9 +108,9 @@ function NavProvider({ children }: { children: ReactNode }) {
 
     updateShowNav();
 
-    window.addEventListener("scroll", updateShowNav);
+    window.addEventListener('scroll', updateShowNav);
     return () => {
-      window.removeEventListener("scroll", updateShowNav);
+      window.removeEventListener('scroll', updateShowNav);
     };
   }, [navShowing, atTopOfPage, navDisabled, navHeight, navLocked]);
 
@@ -134,7 +134,7 @@ function NavProvider({ children }: { children: ReactNode }) {
 function useNavShowing() {
   const context = useContext(NavContext);
   if (context === undefined) {
-    throw new Error("useNavShowing must be used within a NavShowingProvider");
+    throw new Error('useNavShowing must be used within a NavShowingProvider');
   }
   return context;
 }

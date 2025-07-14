@@ -1,4 +1,4 @@
-import useLockBodyScroll from "@/utils/useLockBodyScroll";
+import useLockBodyScroll from '@/utils/useLockBodyScroll';
 
 type PreventBodyScrollProps = {
   enabled?: boolean;

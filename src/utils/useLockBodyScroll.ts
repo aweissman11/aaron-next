@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
 
-import { useMountEffect } from "@react-hookz/web";
-import { RefObject, useEffect, useRef } from "react";
+import { useMountEffect } from '@react-hookz/web';
+import { RefObject, useEffect, useRef } from 'react';
 
 export const noop = () => {};
 
 export function on<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
-  ...args: Parameters<T["addEventListener"]> | [string, Function | null, ...any]
+  ...args: Parameters<T['addEventListener']> | [string, Function | null, ...any]
 ): void {
   if (obj && obj.addEventListener) {
     obj.addEventListener(
-      ...(args as Parameters<HTMLElement["addEventListener"]>)
+      ...(args as Parameters<HTMLElement['addEventListener']>),
     );
   }
 }
@@ -23,28 +23,28 @@ export function on<T extends Window | Document | HTMLElement | EventTarget>(
 export function off<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
   ...args:
-    | Parameters<T["removeEventListener"]>
+    | Parameters<T['removeEventListener']>
     | [string, Function | null, ...any]
 ): void {
   if (obj && obj.removeEventListener) {
     obj.removeEventListener(
-      ...(args as Parameters<HTMLElement["removeEventListener"]>)
+      ...(args as Parameters<HTMLElement['removeEventListener']>),
     );
   }
 }
 
-export const isBrowser = typeof window !== "undefined";
+export const isBrowser = typeof window !== 'undefined';
 
-export const isNavigator = typeof navigator !== "undefined";
+export const isNavigator = typeof navigator !== 'undefined';
 
 export function getClosestBody(
-  el: Element | HTMLElement | HTMLIFrameElement | null
+  el: Element | HTMLElement | HTMLIFrameElement | null,
 ): HTMLElement | null {
   if (!el) {
     return null;
-  } else if (el.tagName === "BODY") {
+  } else if (el.tagName === 'BODY') {
     return el as HTMLElement;
-  } else if (el.tagName === "IFRAME") {
+  } else if (el.tagName === 'IFRAME') {
     const document = (el as HTMLIFrameElement).contentDocument;
     return document ? document.body : null;
   } else if (!(el as HTMLElement).offsetParent) {
@@ -66,7 +66,7 @@ function preventDefault(rawEvent: TouchEvent): boolean {
 
 export interface BodyInfoItem {
   counter: number;
-  initialOverflow: CSSStyleDeclaration["overflow"];
+  initialOverflow: CSSStyleDeclaration['overflow'];
 }
 
 const isIosDevice =
@@ -78,18 +78,18 @@ const isIosDevice =
 const bodies: Map<HTMLElement, BodyInfoItem> = new Map();
 
 const doc: Document | undefined =
-  typeof document === "object" ? document : undefined;
+  typeof document === 'object' ? document : undefined;
 
 let documentListenerAdded = false;
 
 export default !doc
   ? function useLockBodyMock(
       _locked: boolean = true,
-      _elementRef?: RefObject<HTMLElement>
+      _elementRef?: RefObject<HTMLElement>,
     ) {}
   : function useLockBody(
       locked: boolean = true,
-      elementRef?: RefObject<HTMLElement>
+      elementRef?: RefObject<HTMLElement>,
     ) {
       const bodyRef = useRef(doc!.body);
       elementRef = elementRef || bodyRef;
@@ -103,12 +103,12 @@ export default !doc
           });
           if (isIosDevice) {
             if (!documentListenerAdded) {
-              on(document, "touchmove", preventDefault, { passive: false });
+              on(document, 'touchmove', preventDefault, { passive: false });
 
               documentListenerAdded = true;
             }
           } else {
-            body.style.overflow = "hidden";
+            body.style.overflow = 'hidden';
           }
         } else {
           bodies.set(body, {
@@ -127,7 +127,7 @@ export default !doc
               body.ontouchmove = null;
 
               if (documentListenerAdded) {
-                off(document, "touchmove", preventDefault);
+                off(document, 'touchmove', preventDefault);
                 documentListenerAdded = false;
               }
             } else {

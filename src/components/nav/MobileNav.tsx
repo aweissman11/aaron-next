@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import clsx from "clsx";
-import { INavLink } from "./Nav";
-import NavWrapper from "./NavWrapper";
-import { Fragment, useState } from "react";
-import Logo from "@/components/nav/assets/logo";
-import AppLink from "@/components/AppLink";
-import { Carrot } from "lucide-react";
-import { PreventBodyScroll } from "@/utils/preventBodyScroll";
+import clsx from 'clsx';
+import { INavLink } from './Nav';
+import NavWrapper from './NavWrapper';
+import { Fragment, useState } from 'react';
+import Logo from '@/components/nav/assets/logo';
+import AppLink from '@/components/AppLink';
+import { Carrot } from 'lucide-react';
+import { PreventBodyScroll } from '@/utils/preventBodyScroll';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { motion, AnimatePresence } from "motion/react";
+} from '@/components/ui/popover';
+import { motion, AnimatePresence } from 'motion/react';
 
 type MobileNavProps = {
   links: INavLink[];
@@ -43,8 +43,8 @@ export default function MobileNav({ links }: MobileNavProps) {
             <Logo
               className={clsx(
                 isOpen || blackPage
-                  ? "stroke-white fill-white"
-                  : "stroke-black fill-black"
+                  ? 'stroke-white fill-white'
+                  : 'stroke-black fill-black',
               )}
             />
           </AppLink>
@@ -54,7 +54,7 @@ export default function MobileNav({ links }: MobileNavProps) {
               id="open_close_mobile"
               className="ml-6 outline-none"
             >
-              {isOpen ? "CLOSE" : "MENU"}
+              {isOpen ? 'CLOSE' : 'MENU'}
             </PopoverTrigger>
           </div>
         </div>
@@ -86,33 +86,33 @@ export default function MobileNav({ links }: MobileNavProps) {
                             onClick={() => toggleSubroutes(link.href)}
                             className={clsx({
                               flex: true,
-                              "w-full": true,
-                              "items-center": true,
-                              "justify-between": true,
-                              "pt-6": true,
-                              "pb-6": true,
-                              "text-white": true,
-                              "outline-none": true,
-                              "border-b": openSubroutes !== link.href,
-                              "border-solid": openSubroutes !== link.href,
-                              "border-white": openSubroutes !== link.href,
+                              'w-full': true,
+                              'items-center': true,
+                              'justify-between': true,
+                              'pt-6': true,
+                              'pb-6': true,
+                              'text-white': true,
+                              'outline-none': true,
+                              'border-b': openSubroutes !== link.href,
+                              'border-solid': openSubroutes !== link.href,
+                              'border-white': openSubroutes !== link.href,
                             })}
                           >
                             <span className="text-[16px]">{link.name}</span>
                             <Carrot
                               className={clsx({
-                                "transition-transform": true,
-                                "rotate-180": openSubroutes === link.href,
-                                "duration-150": true,
+                                'transition-transform': true,
+                                'rotate-180': openSubroutes === link.href,
+                                'duration-150': true,
                               })}
                             />
                           </button>
                           <AnimatePresence>
                             {openSubroutes === link.href && (
                               <motion.div
-                                initial={{ maxHeight: 0, overflow: "hidden" }}
-                                animate={{ maxHeight: 150, overflow: "hidden" }}
-                                exit={{ maxHeight: 0, overflow: "hidden" }}
+                                initial={{ maxHeight: 0, overflow: 'hidden' }}
+                                animate={{ maxHeight: 150, overflow: 'hidden' }}
+                                exit={{ maxHeight: 0, overflow: 'hidden' }}
                                 transition={{ duration: 0.3 }}
                                 className="flex flex-col"
                               >
@@ -122,8 +122,8 @@ export default function MobileNav({ links }: MobileNavProps) {
                                     key={route.name}
                                     id={`top-nav-${link.name}`}
                                     className={clsx({
-                                      "pb-6": ix !== all.length - 1,
-                                      "text-[14px]": true,
+                                      'pb-6': ix !== all.length - 1,
+                                      'text-[14px]': true,
                                     })}
                                     onClick={handleClose}
                                   >
